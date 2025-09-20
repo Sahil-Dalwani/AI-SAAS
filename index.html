@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligent Automation Platform</title>
+    <title>AutomateAI - Intelligent Automation Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -380,6 +380,172 @@
             color: var(--gray);
         }
         
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .pricing-switcher {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-switcher span {
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--gray-light);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .pricing-card.popular::before {
+            content: "Most Popular";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-bottom-left-radius: 12px;
+            border-top-right-radius: 16px;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-price {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .price-interval {
+            color: var(--gray);
+            margin-left: 0.5rem;
+        }
+        
+        .price-note {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            margin: 2rem 0;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-features i {
+            color: var(--success);
+            margin-right: 0.75rem;
+        }
+        
+        .pricing-button {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        
         /* CTA Section */
         .cta {
             padding: 5rem 0;
@@ -534,6 +700,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -580,6 +750,10 @@
             .hero-content {
                 flex-direction: row;
                 align-items: center;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .footer-grid {
@@ -662,11 +836,7 @@
                 </div>
             </div>
             
-            
-                        
-                        
-                    </div>
-                </div>
+           
             </div>
         </div>
     </section>
@@ -745,11 +915,107 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, Transparent <span>Pricing</span></h2>
+                <p class="section-description">Choose the plan that works best for your team with a 14-day free trial</p>
+            </div>
+            
+            <div class="pricing-switcher">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span>Annual (Save 20%)</span>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Starter</h3>
+                        <p class="pricing-description">For small teams getting started</p>
+                        <div class="pricing-price">
+                            <span class="price-amount">$29</span>
+                            <span class="price-interval">/month</span>
+                        </div>
+                        <p class="price-note">Billed annually or $35 month-to-month</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 500 automation runs</li>
+                            <li><i class="fas fa-check"></i> 5 users included</li>
+                            <li><i class="fas fa-check"></i> Basic integrations</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                            <li><i class="fas fa-times" style="color: #ef4444;"></i> Advanced analytics</li>
+                            <li><i class="fas fa-times" style="color: #ef4444;"></i> Priority support</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#" class="btn btn-secondary pricing-button">Get Started</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Professional</h3>
+                        <p class="pricing-description">For growing businesses</p>
+                        <div class="pricing-price">
+                            <span class="price-amount">$79</span>
+                            <span class="price-interval">/month</span>
+                        </div>
+                        <p class="price-note">Billed annually or $95 month-to-month</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 2,000 automation runs</li>
+                            <li><i class="fas fa-check"></i> 15 users included</li>
+                            <li><i class="fas fa-check"></i> All integrations</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
+                            <li><i class="fas fa-times" style="color: #ef4444;"></i> Custom SLA</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary pricing-button">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <p class="pricing-description">For large organizations</p>
+                        <div class="pricing-price">
+                            <span class="price-amount">$199</span>
+                            <span class="price-interval">/month</span>
+                        </div>
+                        <p class="price-note">Billed annually or $240 month-to-month</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Unlimited automation runs</li>
+                            <li><i class="fas fa-check"></i> Unlimited users</li>
+                            <li><i class="fas fa-check"></i> All integrations</li>
+                            <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                            <li><i class="fas fa-check"></i> Custom SLA</li>
+                            <li><i class="fas fa-check"></i> SSO & advanced security</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#" class="btn btn-secondary pricing-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
             <h2 class="cta-title">Ready to Transform Your Workflow?</h2>
-            <p class="cta-description">Join thousands of teams boosting productivity with Ai SAAS. Get started in minutes.</p>
+            <p class="cta-description">Join thousands of teams boosting productivity with AutomateAI. Get started in minutes.</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-light">Start Free Trial</a>
                 <a href="#" class="btn btn-outline-light">Schedule a Demo</a>
@@ -766,7 +1032,7 @@
                         <div class="logo-icon">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <span>Ai SAAS</span>
+                        <span>AutomateAI</span>
                     </div>
                     <p class="footer-description">The intelligent automation platform that helps teams work smarter, not harder.</p>
                 </div>
@@ -803,7 +1069,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>All rights reserved.</p>
+                <p>© 2023 AutomateAI. All rights reserved.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -855,8 +1121,7 @@
             // Close menu when clicking outside
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('.nav-container') && window.innerWidth < 768) {
-                    navLinks.style.display = 'none';
-                    navButtons.style.display = 'none';
+                    navLinks.style.display = 'none';                    navButtons.style.display = 'none';
                 }
             });
             
